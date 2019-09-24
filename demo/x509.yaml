@@ -1,0 +1,19 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: hello-env-pythongirona.cat
+  namespace: pythongirona
+spec:
+  secretName: hello-env-pythongirona-cat-tls
+  dnsNames:
+  - hello.env.pythongirona.cat
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  acme:
+    config:
+      - http01:
+          ingress: flasktest-ingress
+        domains:
+          - hello.env.pythongirona.cat
+
