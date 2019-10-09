@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: flasktest
+  namespace: pythongirona
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: flasktestbackend
+    spec:
+      containers:
+      - name: backend
+        image: joelsaunders91/flask-test
+        ports:
+          - containerPort: 5000
